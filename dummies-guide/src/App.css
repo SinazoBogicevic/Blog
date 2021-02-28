@@ -1,0 +1,275 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Poppins:ital,wght@1,300&display=swap");
+:root {
+  --black: #000000;
+  --darker-green: #22c78b;
+  --lighter-green: #33d360;
+  --white: #ffffff;
+  --dark-gray: #d2d2d2ea;
+  --light-gray: #e2e2e2;
+}
+body {
+  width: 100%;
+  height: 100%;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+header div {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 50%;
+  margin-left: 52px;
+  padding-right: 40px;
+}
+
+ol {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  margin-right: 16px;
+}
+
+ol li {
+  position: relative;
+  margin: 0 16px;
+  cursor: pointer;
+}
+ol li::before {
+  content: "";
+  height: 3px;
+  width: 0;
+  background: var(--darker-green);
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  transition: 0.5s;
+}
+ol li:hover::before {
+  width: 100%;
+}
+ol li a {
+  color: var(--black);
+}
+.button {
+  padding: 8px 30px;
+  border: none;
+  outline: none;
+  background-color: var(--darker-green);
+  background: radial-gradient(
+    var(--darker-green),
+    var(--lighter-green),
+    var(--darker-green)
+  );
+  cursor: pointer;
+}
+
+.button a {
+  color: var(--white);
+}
+
+.button:hover {
+  background-color: var(--lighter-green);
+}
+
+.button:active {
+  transform: scale(1.2);
+}
+
+.contact-button {
+  margin-left: 12px;
+}
+
+.toggle {
+  display: none;
+  position: absolute;
+  right: 32px;
+  width: 25px;
+  height: 100%;
+  margin: 0px 20px;
+}
+
+.toggler {
+  width: 100%;
+  height: 3px;
+  background: var(--lighter-green);
+  transition: 0.4s ease-out;
+  margin: 4px auto;
+}
+
+/**
+.active div {
+  border: 1px solid var(--darker-green);
+}
+**/
+
+.top:active {
+  animation: inT 0.8s backwards;
+  animation-direction: reverse;
+}
+
+.middle:active {
+  animation: outM 0.8s backwards;
+  animation-direction: reverse;
+}
+
+.bottom:active {
+  animation: inB 0.8s backwards;
+  animation-direction: reverse;
+}
+
+.active .top {
+  animation: inT 0.8s forwards;
+  animation-direction: normal;
+}
+
+.active .middle {
+  animation: outM 0.7s forwards;
+  animation-direction: normal;
+}
+
+.active .bottom {
+  animation: inB 0.8s forwards;
+  animation-direction: normal;
+}
+
+/**animation*/
+@keyframes inT {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(9px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(9px) rotate(135deg);
+  }
+}
+
+@keyframes outM {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes inB {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-5px) rotate(-135deg);
+  }
+}
+
+.my-masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  flex: 1 0 auto;
+  margin: 25px 50px;
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 30px; /* gutter size */
+  background-clip: padding-box;
+}
+
+.titles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 8px 16px;
+}
+
+.titles div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24px;
+}
+
+.author-img {
+  width: 60px;
+  height: 60px;
+  border: 2px solid var(--black);
+  border-radius: 50%;
+}
+
+.titles div h5 {
+  padding-left: 24px;
+}
+
+/**media queries */
+/* Optional, different gutter size on mobile */
+@media (max-width: 800px) {
+  .toggle {
+    display: block;
+    margin-right: 8px;
+    z-index: 5;
+  }
+
+  .active {
+    width: 100%;
+  }
+
+  ol {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    height: 400px;
+    background: white;
+    transition: transform 0.8s ease;
+    transform: translateX(100%);
+    z-index: 5;
+    overflow-x: hidden;
+  }
+
+  .active ol {
+    transform: translateX(0%);
+  }
+
+  ol li {
+    margin: 36px 16px;
+  }
+
+  .my-masonry-grid {
+    margin: 25px 20px;
+  }
+
+  .button {
+    display: none;
+  }
+
+  .titles div img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .author-img {
+    width: 40px;
+    height: 40px;
+  }
+}
